@@ -1,0 +1,20 @@
+arduino port Used:
+TFT: 38,39,40,41
+touch: 6,5,4,3,2
+sd card: D52,50,51+SS
+
+
+Ports analogics
+- sound 4
+- ir led1 6
+- ir led2 5
+- shock 7
+
+ports num:
+-buzzer 13
+-focus 12
+-trigger 11
+-flash1 10
+-flash2 9
+-laser1 8 
+-laser2 7

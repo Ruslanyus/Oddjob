@@ -1,0 +1,7 @@
+Boite a tout faire pour la photo.
+Base sur le projet photoduino, 
+il permet:
+le declenchement par detection de son,
+de chock, de lumiere, mais aussi par 
+franchissement de barriere IR ou laser
+sans oublier l'intervalometre
