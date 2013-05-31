@@ -220,8 +220,14 @@ void loop()
      case 8: //water
       menu_water();
     break;
-    case 9: //help
+    case 9: //clean
+    clean_mode();
+    break;
+    case 10: //lux meter
     lux_mode();
+    break;
+
+    case 11: //help
     help_menuP1();
     break;
   }

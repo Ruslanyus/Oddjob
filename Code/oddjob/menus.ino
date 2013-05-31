@@ -2,8 +2,8 @@
 int main_menu()
 {
   int res;
-  String files320[10]={"conf-64.RAW", "astro-64.RAW", "barri-64.RAW",  "slave-64.RAW", "inter-64.RAW", "marte-64.RAW", "sound-64.RAW","speed-64.RAW","water-64.RAW","help-64.RAW"}; // 320x240
-  res=icon_menu(10, files320, 64,64);
+  String files320[12]={"conf-64.RAW", "astro-64.RAW", "barri-64.RAW",  "slave-64.RAW", "inter-64.RAW", "marte-64.RAW", "sound-64.RAW","speed-64.RAW","water-64.RAW","clean-64.RAW","lux-64.RAW","help-64.RAW"}; // 320x240
+  res=icon_menu(12, files320, 64,64);
   return(res);
 }
 
