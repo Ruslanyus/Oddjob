@@ -70,29 +70,27 @@ void config_loadBackup_intervalMode(){
  
  int menu_interval()
 {
-   int res,res2;
+   int res;
 
   while (true)
   {
   
-  res=mode_menu("Mode Interval");
-   switch(res)
-  {
-    case 0: //run
-    //res2=menu_conf_interval();
-    runAs_interval();
-    break;
-    
-    case 1: //config
-     res2=menu_conf_interval();
-     config_saveBackup_intervalMode();
-     
-    break;
-    
-    case 2: //home
-    return(0);
-    break;
-  }
+    res=mode_menu("Mode Interval");
+     switch(res)
+    {
+      case 0: //run
+      runAs_interval();
+      break;
+      
+      case 1: //config
+      menu_conf_interval();
+      config_saveBackup_intervalMode();
+      break;
+      
+      case 2: //home
+      return(0);
+      break;
+    }
   }
 }
 

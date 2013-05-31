@@ -72,28 +72,27 @@ void config_saveBackup_shockTriggerMode(){
  
 int menu_shock()
 {
-   int res,res2;
+   int res;
 
   while (true)
   {
   
-  res=mode_menu("Mode Shock");
-   switch(res)
-  {
-    case 0: //run
-    runAs_shockTrigger();
-    break;
-    
-    case 1: //config
-     res2=menu_conf_shock();
-     config_saveBackup_shockTriggerMode();
-     
-    break;
-    
-    case 2: //home
-    return(0);
-    break;
-  }
+    res=mode_menu("Mode Shock");
+     switch(res)
+    {
+      case 0: //run
+      runAs_shockTrigger();
+      break;
+      
+      case 1: //config
+      menu_conf_shock();
+      config_saveBackup_shockTriggerMode(); 
+      break;
+      
+      case 2: //home
+      return(0);
+      break;
+    }
   }
 }
 

@@ -55,28 +55,26 @@ void config_loadBackup_flashSlave(){
   
   int menu_slave()
 {
-   int res,res2;
-
-  while (true)
+   int res;
+   while (true)
   {
  
-  res=mode_menu("Mode Flash Slave");
-   switch(res)
-  {
-    case 0: //run
-    menu_conf_slave();
-    break;
-    
-    case 1: //config
-     res2=menu_conf_slave();
-     config_saveBackup_flashSlave();
-     
-    break;
-    
-    case 2: //home
-    return(0);
-    break;
-  }
+    res=mode_menu("Mode Flash Slave");
+     switch(res)
+    {
+      case 0: //run
+      runAs_flashSlave();
+      break;
+      
+      case 1: //config
+      menu_conf_slave();
+      config_saveBackup_flashSlave();
+      break;
+      
+      case 2: //home
+      return(0);
+      break;
+    }
   }
 }
 
@@ -176,17 +174,13 @@ int menu_conf_slave()
 
 
 
- // Run audio trigger mode
+ // Run flash slave trigger mode
 void runAs_flashSlave() { 
        
-
-    int dec=20;
-    int y=20;
     myGLCD.clrScr(); //clear the screen
     myGLCD.setFont(BigFont);
     myGLCD.setColor(200, 200, 200);
-    myGLCD.print(MSG_RUN_FLASH_SLAVE,10,y);
-    y=y+dec;
+    myGLCD.print(MSG_RUN_FLASH_SLAVE,10,20);
     cancelFlag=false;
    
    for(;(cancelFlag==false);) { 

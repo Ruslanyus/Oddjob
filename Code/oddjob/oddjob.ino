@@ -26,14 +26,11 @@ extern uint8_t SevenSegNumFont[];
 
 
 // Global variables
-int          BH1750address = 0x23; 
-byte         buff[2]; //lux
-byte         lastKey = NO_KEY;          // Last key pressed
-boolean      flagHoldKey = false;       // Flag to ignore keys after a hold key
+int          BH1750address = 0x23;      //luxmeter
+byte         buff[2];                   //lux
 
 // System config in ram
 boolean      system_useSpeaker;
-byte         system_interfaceSensorLimit;
 unsigned int system_flashPulsing;
 
 
@@ -135,13 +132,8 @@ UTFTtf   myGLCD(ITDB32S, 38, 39, 40, 41);   // Remember to change the model para
 UTouch   myTouch(6,5,4,3,2);
 
 int picsize_x, picsize_y;
-//int nb_icon_x,nb_icon_y;
-//int icon_size;
+
 word res;
-//long sm, em;
-//int res1;
-
-
 
 
 

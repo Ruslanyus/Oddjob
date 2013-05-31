@@ -54,7 +54,7 @@ void config_loadBackup_astroMode(){
  
  int menu_astro()
 {
-   int res,res2;
+   int res;
 
   while (true)
   {
@@ -63,14 +63,12 @@ void config_loadBackup_astroMode(){
    switch(res)
   {
     case 0: //run
-    //res2=menu_conf_interval();
     runAs_astro();
     break;
     
     case 1: //config
-     res2=menu_conf_astro();
-     config_saveBackup_astroMode();
-     
+    menu_conf_astro();
+    config_saveBackup_astroMode();
     break;
     
     case 2: //home

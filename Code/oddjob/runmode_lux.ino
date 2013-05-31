@@ -1,7 +1,6 @@
 
 void lux_mode() {
 
-   int i;
    uint16_t val=0;
    uint16_t val_min=0;
    uint16_t val_max=0;

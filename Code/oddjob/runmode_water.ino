@@ -57,7 +57,7 @@ void config_saveBackup_waterMode(){
  
 int menu_water()
 {
-   int res,res2;
+   int res;
 
   while (true)
   {
@@ -70,10 +70,8 @@ int menu_water()
     break;
     
     case 1: //config
-     
-     res2=menu_conf_water();
-     config_saveBackup_waterMode();
-     
+    menu_conf_water();
+    config_saveBackup_waterMode(); 
     break;
     
     case 2: //home
@@ -89,7 +87,7 @@ int menu_conf_water()
   
   
   list[0].description="Drop count";
-  list[0].unit="  ";
+  list[0].unit="nb";
   list[0].value=dropMode_dropCount;
   list[0].mini=0;
   list[0].maxi=10000;
@@ -99,7 +97,7 @@ int menu_conf_water()
   list[0].list[3]="";
   list[0].list[4]="";
 
-  list[1].description="DropDuration";
+  list[1].description="DrpDuration";
   list[1].unit="ms";
   list[1].value=dropMode_dropDuration;
   list[1].mini=0;
@@ -110,7 +108,7 @@ int menu_conf_water()
   list[1].list[3]="";
   list[1].list[4]="";
 
-  list[2].description="DropInterval";
+  list[2].description="DrpInterval";
   list[2].unit="ms";
   list[2].value=dropMode_dropInterval;
   list[2].mini=0;
@@ -121,7 +119,7 @@ int menu_conf_water()
   list[2].list[3]="";
   list[2].list[4]="";
   
-  list[3].description="Drop2Duration";
+  list[3].description="Drp2Duration";
   list[3].unit="ms";
   list[3].value=dropMode_drop2Duration;
   list[3].mini=0;
@@ -144,7 +142,7 @@ int menu_conf_water()
   list[4].list[4]="";
 
   list[5].description="TIntercycle";
-  list[5].unit="ms ";
+  list[5].unit="ms";
   list[5].value=dropMode_dropPause;
   list[5].mini=0;
   list[5].maxi=64000;

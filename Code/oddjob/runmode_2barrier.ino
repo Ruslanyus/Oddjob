@@ -52,28 +52,27 @@ void config_saveBackup_barrier2Mode(){
  
 int menu_2barrier()
 {
-   int res,res2;
+   int res;
 
   while (true)
   {
   
-  res=mode_menu("Mode 2Barriere");
-   switch(res)
-  {
-    case 0: //run
-    runAs_2barrierMode();
-    break;
-    
-    case 1: //config
-     res2=menu_conf_2barrier();
-     config_saveBackup_barrier2Mode();
-     
-    break;
-    
-    case 2: //home
-    return(0);
-    break;
-  }
+    res=mode_menu("Mode 2Barriere");
+     switch(res)
+    {
+      case 0: //run
+      runAs_2barrierMode();
+      break;
+      
+      case 1: //config
+      menu_conf_2barrier();
+      config_saveBackup_barrier2Mode();
+      break;
+      
+      case 2: //home
+      return(0);
+      break;
+    }
   }
 }
 

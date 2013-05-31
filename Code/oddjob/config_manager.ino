@@ -96,7 +96,6 @@ void config_loadBackup_all(){
 void config_loadBackup_system(){   
   
   system_useSpeaker = EEPROM.read(EE_ADDR_system_useSpeaker);
-  system_interfaceSensorLimit = EEPROM.read(EE_ADDR_system_interfaceSensorLimit);
   system_flashPulsing = EEPROM.read(EE_ADDR_system_flashPulsing);
 }
 
@@ -104,7 +103,6 @@ void config_loadBackup_system(){
 void config_loadDefaults_system() {
   
   system_useSpeaker = DEFAULT_system_useSpeaker;
-  system_interfaceSensorLimit = DEFAULT_system_interfaceSensorLimit;
   system_flashPulsing = DEFAULT_system_flashPulsing ;
 }
 
@@ -112,7 +110,6 @@ void config_loadDefaults_system() {
 void config_saveBackup_system(){ 
   
   EEPROM.write(EE_ADDR_system_useSpeaker, system_useSpeaker);
-  EEPROM.write(EE_ADDR_system_interfaceSensorLimit, system_interfaceSensorLimit);
   EEPROM.write(EE_ADDR_system_flashPulsing, system_flashPulsing);
 
 }

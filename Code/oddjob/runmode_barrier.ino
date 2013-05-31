@@ -72,7 +72,7 @@ void config_saveBackup_barrierMode(){
  
 int menu_barrier()
 {
-   int res,res2;
+   int res;
 
   while (true)
   {
@@ -85,9 +85,8 @@ int menu_barrier()
     break;
     
     case 1: //config
-     res2=menu_conf_barrier();
-     config_saveBackup_barrierMode();
-     
+    menu_conf_barrier();
+    config_saveBackup_barrierMode(); 
     break;
     
     case 2: //home

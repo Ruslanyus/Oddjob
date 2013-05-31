@@ -5,17 +5,8 @@
  *                              before compile and upload this sketch                          * 
  *                                                                                             *
  * ------------------------------------------------------------------------------------------- */
-// Remote mode variables
-boolean remoteMode = false;
-boolean remoteSensorBroadcasting = false;
-boolean remoteSensorBroadcastingBeepOnLimit = false;
-//
-// Language of menus:
-// Valid values: 
-// - LANGUAGE_EN for (English)
-// - LANGUAGE_FR for (French)
-//
-#define LANGUAGE_FR                 
+
+                
 
 //
 // Default Shutterlag:
@@ -58,16 +49,7 @@ boolean remoteSensorBroadcastingBeepOnLimit = false;
 //
 #define DEVICES_CAMERA_MIRROR_LOCKUP_TIMELIMIT         31000
 
-// 
-// Default sensor tunning mode:
-// - When you set the limit of a sensor you have two modes available. Visual and numeric. This is the 
-//   default value but also you can change this preference through the system config menu.
-// 
-// Valid values:
-// - SENSORLIMIT_VISUAL
-// - SENSORLIMIT_NUMERIC
-//
-#define DEFAULT_system_interfaceSensorLimit           SENSORLIMIT_VISUAL
+
 
 //
 // Arduino board type:
@@ -93,7 +75,6 @@ boolean remoteSensorBroadcastingBeepOnLimit = false;
 #define CODE_MINOR_VERSION          0x13 // minor version
 
 // Default system config
-#define DEFAULT_system_useBacklight                   true
 #define DEFAULT_system_useSpeaker                     true
 #define DEFAULT_system_flashPulsing                   DEVICES_FLASHES_SHOOTING_PULSE
 
@@ -195,6 +176,7 @@ boolean remoteSensorBroadcastingBeepOnLimit = false;
 #define PINS_SENSOR_MIC      58  //(analog pin)
 
 // Measure units
+
 #define UNITS_MS             0  // miliseconds
 #define UNITS_SECS           1  // seconds
 #define UNITS_MINS           2  // minutes
@@ -208,38 +190,11 @@ boolean remoteSensorBroadcastingBeepOnLimit = false;
 #define SENSOR_MODE_HIGHER   1 // for trigg by higher values
 
 
-// Sensor types
-#define SENSOR_TYPE_NONE                 0 // None sensor
-#define SENSOR_TYPE_AUDIO                1 // Audio sensor
-#define SENSOR_TYPE_BARRIER              2 // Barrier sensor
-#define SENSOR_TYPE_LIGHT                3 // Light sensor
-#define SENSOR_TYPE_SHOCK                4 // Shock sensor
-
-
 // Shooting modes
 #define SHOOTINGMODE_NORMAL           0 // Normal mode 
 #define SHOOTINGMODE_PREBULB          1 // Prebulb mode
 #define SHOOTINGMODE_MIRRORLOCKUP     2 // Mirror lookup mode
 
-// Interface modes
-#define SENSORLIMIT_VISUAL      0 // Visual 
-#define SENSORLIMIT_NUMERIC     1 // Visual 
-
-// Keycodes
-#define NO_KEY               0 // No keys pressed
-#define KEY_A                1 // Button A was pressed
-#define KEY_B                2 // Button B was pressed
-#define KEY_AH               3 // Button A was pressed and holded (KEY_HOLD_TIME) milisecons
-#define KEY_BH               4 // Button B was pressed and holded (KEY_HOLD_TIME) milisecons
-
-// Keyboard times
-#define KEY_DEBOUNCE_TIME    30 // debounce time (ms) to prevent flickering when pressing or releasing the button
-#define KEY_HOLD_TIME       400 // holding period (ms) how long to wait for press+hold event
-
-// Characters and symbols addreses on lcd eeprom
-#define SYMBOL_DOWN         0x00
-#define SYMBOL_UP           0x01
-#define SYMBOL_BOX          0xff
 
 // EEPROM size in bytes
 #define EEPROM_SIZE         512
@@ -253,9 +208,9 @@ boolean remoteSensorBroadcastingBeepOnLimit = false;
 #define EE_ADDR_CODE_MINOR_VERSION                  0x06 // BYTE
 
 // EEPROM Addreses for system config
-#define EE_ADDR_system_useBacklight                 0x10 // BYTE
+//#define EE_ADDR_system_useBacklight                 0x10 // BYTE
 #define EE_ADDR_system_useSpeaker                   0x12 // BYTE
-#define EE_ADDR_system_interfaceSensorLimit         0x14 // BYTE
+//#define EE_ADDR_system_interfaceSensorLimit         0x14 // BYTE
 #define EE_ADDR_system_flashPulsing                 0x16 // BYTE
 
 // EEPROM Addreses for interval mode config
@@ -337,130 +292,12 @@ boolean remoteSensorBroadcastingBeepOnLimit = false;
 #define EE_ADDR_dropMode_dropPause                  0xC2 // WORD
 #define EE_ADDR_dropMode_dropShooting               0xC4 // WORD
 
-#ifdef LANGUAGE_FR
-  // Messages list                      "123456789012345"
- #define MSG_PHOTODUINO_V 	        "Photoduino v"
-  #define MSG_READY 		        "Ready!"
-  #define MSG_MAIN_MENU 	        "Menu Principal"
-  #define MSG_SHOCK_TRIGGER 	        "Shock trigger"
-  #define MSG_BARRIER_MODE 	        "Mode Barriere"
-  #define MSG_INTERVAL_MODE 	        "Mode Interval"
-  #define MSG_AUDIO_TRIGGER 	        "Audio trigger"
-  #define MSG_FLASH_SLAVE               "Flash slave"
-  #define MSG_ASTRO_MODE                "Mode Astro"
-  #define MSG_AUDIO_CONFIG 	        "Audio Config"
-  #define MSG_SHOCK_CONFIG 	        "Shock Config"
-  #define MSG_BARRIER_CONFIG 	        "Config Barriere"
-  #define MSG_SYSTEM_CONFIG 	        "Config Systeme"
-  #define MSG_CONFIG 		        "Config"
-  #define MSG_RUN 		        "Run"
-  #define MSG_RUN_AUDIO                 "Run audio"
-  #define MSG_RUN_INTERVAL              "Run interval"
-  #define MSG_RUN_BARRIER               "Run barrier"
-  #define MSG_RUN_SHOCK                 "Run shock"
-  #define MSG_RUN_FLASH_SLAVE           "Run flashslave"
-  #define MSG_RUN_ASTRO                 "Run astro"
-  #define MSG_RESET_CONFIG 	        "Reset config"
-  #define MSG_AUTOFOCUS_TIME 	        "Autofocus time"
-  #define MSG_SHUTTERLAG_TIME 	        "Shutterlag time"
-  #define MSG_USE_FLASH1 	        "Use Flash1"
-  #define MSG_USE_FLASH2 	        "Use Flash2"
-  #define MSG_FLASH1_PRETIME 	        "Flash1 pretime"
-  #define MSG_FLASH2_PRETIME 	        "Flash2 pretime"
-  #define MSG_CLOSE_PRETIME 	        "Close pretime"
-  #define MSG_INTERVAL_UNITS 	        "Interval unitees"
-  #define MSG_INTERVAL_VALUE 	        "Interval valeur"
-  #define MSG_PAUSE_VALUE 	        "Pause valeur"
-  #define MSG_CICLES 		        "Cycles"
-  #define MSG_SENSOR_LIMIT 	        "Sensor limit"
-  #define MSG_SENSOR      	        ">Capteur :"
-  #define MSG_LIMIT      	        ">Limite  :"
-  #define MSG_SHOOTING_MODE	        "Shooting mode"
-  #define MSG_INTERCICLE_TIME 	        "Intercicle time"
-  #define MSG_BACKLIGHT 	        "Backlight"
-  #define MSG_SPEAKER 		        "Haut Parleur"
-  #define MSG_RESETTING 	        "Remise a zero..."
-  #define MSG_ABORTING 		        "Annulation..."
-  #define MSG_YES 		        "Oui"
-  #define MSG_NO		        "Non"
-  #define MSG_UNITS_US		        "us"
-  #define MSG_UNITS_MS		        "ms"
-  #define MSG_UNITS_SECS	        "secondes"
-  #define MSG_UNITS_MINS	        "minutes"
-  #define MSG_UNITS_HOURS	        "heures"
-  #define MSG_UNITS_DAYS	        "jours"
-  #define MSG_UNITS_CICLES	        "cycles"
-  #define MSG_SHOOTINGMODE_NORMAL       "Normal"
-  #define MSG_SHOOTINGMODE_PREBULB      "Pre-Bulb Mode"     
-  #define MSG_SHOOTINGMODE_MIRRORLOCKUP "Mirror Lock-up"
-  #define MSG_VISUAL_MODE               "Visual"
-  #define MSG_NUMERIC_MODE              "Numeric"
-  #define MSG_INTERFACE_SENSOR_MODE     "Sensor tunning"
-  #define MSG_FLASH_PULSING             "FlashPulse Delay"
-  #define MSG_REMOTE_MODE               "Remote Mode"
-#else
-  // Messages list                      "123456789012345"
-  #define MSG_PHOTODUINO_V 	        "Photoduino v"
-  #define MSG_READY 		        "Ready!"
-  #define MSG_MAIN_MENU 	        "Main menu"
-  #define MSG_SHOCK_TRIGGER 	        "Shock trigger"
-  #define MSG_BARRIER_MODE 	        "Barrier mode"
-  #define MSG_INTERVAL_MODE 	        "Interval mode"
-  #define MSG_AUDIO_TRIGGER 	        "Audio trigger"
-  #define MSG_FLASH_SLAVE               "Flash slave"
-  #define MSG_ASTRO_MODE                "Mode Astro"
-  #define MSG_AUDIO_CONFIG 	        "Audio Config"
-  #define MSG_SHOCK_CONFIG 	        "Shock Config"
-  #define MSG_BARRIER_CONFIG 	        "Barrier Config"
-  #define MSG_SYSTEM_CONFIG 	        "System config"
-  #define MSG_CONFIG 		        "Config"
-  #define MSG_RUN 		        "Run"
-  #define MSG_RUN_AUDIO                 "Run audio"
-  #define MSG_RUN_INTERVAL              "Run interval"
-  #define MSG_RUN_BARRIER               "Run barrier"
-  #define MSG_RUN_SHOCK                 "Run shock"
-  #define MSG_RUN_FLASH_SLAVE           "Run flashslave"
-  #define MSG_RUN_ASTRO                 "Run astro"
-  #define MSG_RESET_CONFIG 	        "Reset config"
-  #define MSG_AUTOFOCUS_TIME 	        "Autofocus time"
-  #define MSG_SHUTTERLAG_TIME 	        "Shutterlag time"
-  #define MSG_USE_FLASH1 	        "Use Flash1"
-  #define MSG_USE_FLASH2 	        "Use Flash2"
-  #define MSG_FLASH1_PRETIME 	        "Flash1 pretime"
-  #define MSG_FLASH2_PRETIME 	        "Flash2 pretime"
-  #define MSG_CLOSE_PRETIME 	        "Close pretime"
-  #define MSG_INTERVAL_UNITS 	        "Interval units"
-  #define MSG_INTERVAL_VALUE 	        "Interval value"
-  #define MSG_PAUSE_VALUE 	        "Pause value"
-  #define MSG_CICLES 		        "Cicles"
-  #define MSG_SENSOR_LIMIT 	        "Sensor limit"
-  #define MSG_SENSOR      	        ">Sensor :"
-  #define MSG_LIMIT      	        ">Limit  :"
-  #define MSG_SHOOTING_MODE	        "Shooting mode"
-  #define MSG_INTERCICLE_TIME 	        "Intercicle time"
-  #define MSG_BACKLIGHT 	        "Backlight"
-  #define MSG_SPEAKER 		        "Speaker"
-  #define MSG_RESETTING 	        "Resetting..."
-  #define MSG_ABORTING 		        "Aborting..."
-  #define MSG_YES 		        "YES"
-  #define MSG_NO		        "NO"
-  #define MSG_UNITS_US		        "us"
-  #define MSG_UNITS_MS		        "ms"
-  #define MSG_UNITS_SECS	        "seconds"
-  #define MSG_UNITS_MINS	        "minutes"
-  #define MSG_UNITS_HOURS	        "hours"
-  #define MSG_UNITS_DAYS	        "days"
-  #define MSG_UNITS_CICLES	        "cicles"
-  #define MSG_SHOOTINGMODE_NORMAL       "Normal"
-  #define MSG_SHOOTINGMODE_PREBULB      "Pre-Bulb Mode"     
-  #define MSG_SHOOTINGMODE_MIRRORLOCKUP "Mirror Lock-up"
-  #define MSG_VISUAL_MODE               "Visual"
-  #define MSG_NUMERIC_MODE              "Numeric"
-  #define MSG_INTERFACE_SENSOR_MODE     "Sensor tunning"
-  #define MSG_FLASH_PULSING             "FlashPulse Delay"
-  #define MSG_REMOTE_MODE               "Remote Mode"
-#endif
-
+#define MSG_RUN_AUDIO                 "Run audio"
+#define MSG_RUN_INTERVAL              "Run interval"
+#define MSG_RUN_BARRIER               "Run barrier"
+#define MSG_RUN_SHOCK                 "Run shock"
+#define MSG_RUN_FLASH_SLAVE           "Run flashslave"
+#define MSG_RUN_ASTRO                 "Run astro"
 
 struct icon {
   String icon_file;  // icon file

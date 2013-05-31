@@ -9,7 +9,6 @@ int draw_icon (int x,int y,int picsize_x,int picsize_y,String Filename)
 {
 // draw icon
   int res;
-
  
  char filename[13];
  Filename.toCharArray(filename,13);  
@@ -27,8 +26,7 @@ int draw_icon (int x,int y,int picsize_x,int picsize_y,String Filename)
           myGLCD.printNumI(res, 56, 0);
         }
      }         
-     return(res);
-    
+     return(res);    
 }
 
 void printCenter(String text,int x,int y,int size_x,int size_y)
@@ -41,7 +39,7 @@ void printCenter(String text,int x,int y,int size_x,int size_y)
   fontx=myGLCD.getFontXsize();
   fonty=myGLCD.getFontYsize();
   textlength=text.length()*fontx;
-  
+
    myGLCD.print(text, x+(size_max_x-textlength)/2, y+(size_max_y-fonty)/2);
   
 }
@@ -53,11 +51,11 @@ void printCenter(String text,int x,int y,int size_x,int size_y)
 int icon_menu(int nbmenu, String icon_file[], int picsize_x, int picsize_y) {
   
 int value = nbmenu+1;
-int nb_icon_x,nb_icon_y,screensize_x,screensize_y;
+int nb_icon_x,screensize_x,screensize_y;
 screensize_x=myGLCD.getDisplayXSize();
 screensize_y=myGLCD.getDisplayYSize();
 nb_icon_x=screensize_x/picsize_x;
-nb_icon_y=screensize_y/picsize_y;
+//nb_icon_y=screensize_y/picsize_y;
 for (int i=0; i<nbmenu; i++)
   {
     if (icon_file[i]!="") //file not null
@@ -68,7 +66,7 @@ for (int i=0; i<nbmenu; i++)
   }
   while(value>nbmenu)
   {
-    long x, y;
+    int  x, y;
     while (myTouch.dataAvailable() == true)
     {
       myTouch.read();
@@ -113,7 +111,7 @@ for (int i=0; i<nbmenu; i++)
 ///////////////////////
         myGLCD.setFont(BigFont);
         myGLCD.setColor(0, 0, 255);
-        myGLCD.drawRoundRect(icon_tab[i].pos_x,icon_tab[i].pos_y,icon_tab[i].pos_x+icon_tab[i].picsize_x,icon_tab[i].pos_y+icon_tab[i].picsize_y);
+        myGLCD.drawRoundRect(icon_tab[i].pos_x,icon_tab[i].pos_y,icon_tab[i].pos_x+icon_tab[i].picsize_x-1,icon_tab[i].pos_y+icon_tab[i].picsize_y-1);
         printCenter(icon_tab[i].text,icon_tab[i].pos_x,icon_tab[i].pos_y,icon_tab[i].pos_x+icon_tab[i].picsize_x,icon_tab[i].pos_y+icon_tab[i].picsize_y);
         myGLCD.setColor(255, 0, 255);
         myGLCD.setFont(SmallFont);
@@ -129,7 +127,7 @@ for (int i=0; i<nbmenu; i++)
   }
   while(value>nbmenu)
   {
-    long x, y;
+    int x, y;
     
     while (myTouch.dataAvailable() == true)
     {
@@ -403,7 +401,7 @@ list_data menu_edit_list(list_data data)
      }
    }
    
-   if (res==5)
+   if (res==5) //valid
      {
      myGLCD.clrScr(); //clear the screen
      ret=data;
@@ -447,12 +445,12 @@ list_data menu_edit_unsigned_int(list_data data)
   
   myGLCD.setFont(BigFont);
   myGLCD.print("Edit "+ret.description, 0, 1);
-  myGLCD.print("mini: "+String(ret.mini), 80, 239-64);
-  myGLCD.print("maxi: "+String(ret.maxi), 80, 239-64+20);
+  myGLCD.print("mini:"+String(ret.mini), 80, 239-64);
+  myGLCD.print("maxi:"+String(ret.maxi), 80, 239-64+20);
    while (true)
  {
      myGLCD.setFont(BigFont);
-     myGLCD.print("Valeur :"+String(ret.value)+ret.unit+"  ", 0, 20);
+     myGLCD.print("Valeur:"+String(ret.value)+ret.unit+"  ", 0, 20);
      myGLCD.setFont(SmallFont);
    res=flotting_icon_menu(12, mode_icon_tab);
    if (res<10)

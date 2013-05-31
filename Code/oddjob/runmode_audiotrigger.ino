@@ -73,7 +73,7 @@ void config_saveBackup_audioTriggerMode(){
   
   int menu_audio()
 {
-   int res,res2;
+   int res;
 
   while (true)
   {
@@ -87,7 +87,7 @@ void config_saveBackup_audioTriggerMode(){
     break;
     
     case 1: //config
-     res2=menu_conf_audio();
+     menu_conf_audio();
      config_saveBackup_audioTriggerMode();
      
     break;

@@ -1,7 +1,6 @@
 /**
  *
- * - Photoduino
- * - http://code.google.com/p/photoduino/
+ * - Oddjob
  *
  * This file is part of Photoduino.
  *
